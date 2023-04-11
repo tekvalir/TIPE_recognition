@@ -1,6 +1,8 @@
-data/*/**.*
-logs/*/**.*
-*/.ipynb_checkpoints/*
-*.jpg
-*.png
-
+data/**
+logs/**
+**/.ipynb_checkpoints
+**/*.jpg
+**/*.png
+**/*.mp4
+**/__pycache__
+**/.vscode
