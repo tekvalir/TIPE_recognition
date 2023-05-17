@@ -1,26 +1,26 @@
-from layer import *
-from layers import *
-from activations import *
-import numpy as np
-from network import Network
-from loss_functions import *
+# from layer import *
+# from layers import *
+# from activations import *
+# import numpy as np
+# from network import Network
+# from loss_functions import *
 
-net = Network()
-net.add(Conv2D(2,6))
-net.add(Activation(sigmoid, sigmoid_prime))
-net.add(Conv2D(6,1))
-net.add(Activation(sigmoid, sigmoid_prime))
+# net = Network()
+# net.add(Conv2D(2,6))
+# net.add(Activation(sigmoid, sigmoid_prime))
+# net.add(Conv2D(6,1))
+# net.add(Activation(sigmoid, sigmoid_prime))
 
-x_train=np.array([[[[[0]], [[0]]]], [[[[0]],[[1]]]], [[[[1]],[[1]]]], [[[[1]],[[0]]]]])
-y_train=np.array([[[[0]]],[[[1]]], [[[0]]], [[[1]]]])
+# x_train=np.array([[[[[0]], [[0]]]], [[[[0]],[[1]]]], [[[[1]],[[1]]]], [[[[1]],[[0]]]]])
+# y_train=np.array([[[[0]]],[[[1]]], [[[0]]], [[[1]]]])
 
-print(x_train[0].shape)
+# print(x_train[0].shape)
 
-net.use(mse,mse_prime)
-net.fit(x_train, y_train, epochs=1000,learning_rate=0.1)
+# net.use(mse,mse_prime)
+# net.fit(x_train, y_train, epochs=1000,learning_rate=0.1)
 
-out = net.predict(x_train)
-print(out)
+# out = net.predict(x_train)
+# print(out)
 
 # print(test.weigths.shape)
 
@@ -38,3 +38,14 @@ print(out)
 # print(decal(c,2,2))
 # print(np.transpose(c, axes=(1,0)))
 # print(np.transpose(np.transpose(c, axes=(1,0))[::-1,::-1], axes=(1,0)))
+
+from network import Network
+from layers import *
+
+input = Input((2,2,1))
+conv = Conv2D(3, input)
+conv2 = Conv2D(3, conv)
+
+net = Network(input, conv2)
+
+print(net.network[conv][0].weights.shape)
